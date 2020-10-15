@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GUI</name>
+    </assembly>
+    <members>
+        <member name="T:GUI.Form1">
+            <summary>
+            The user interface for the draw with commands tool.
+            The form presents to user a command typing window and
+            a drawing area, with some basic information about
+            the pen width, color, size of draw area, the current
+            mouse location being presented on the form.
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.drawArea">
+            <summary>
+            The draw area exposed to be accessible to other classes
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.posX">
+            <summary>
+            The starting x position of the cursor on the drawing area
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.posY">
+            <summary>
+            The starting y position of the cursor on the drawing area
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.width">
+            <summary>
+            The starting pen width
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.color">
+            <summary>
+            The starting pen color
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.#ctor">
+            <summary>
+            Form constructor to initialize the UI elements in the form
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.clearImageArea">
+            <summary>
+            Clears the draw area
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.btn_Run_Click(System.Object,System.EventArgs)">
+            <summary>
+            Click action handler for the run button on the form
+            </summary>
+            <param name="sender"> the event generator </param>
+            <param name="e"> the event arguments </param>
+        </member>
+        <member name="M:GUI.Form1.drawShape(System.Int32,System.String)">
+            <summary>
+            Draws the given shape type with the specified arguments
+            </summary>
+            <param name="shapeType"> the shapetype, used to obtain the shape from factory </param>
+            <param name="args"> the arguments for the shape </param>
+        </member>
+        <member name="M:GUI.Form1.checkArguments(System.Int32,System.String)">
+            <summary>
+            The arguments validator
+            </summary>
+            <param name="i"> The line number of the command </param>
+            <param name="values"> the arguments / command entered on the line </param>
+            <returns> true if a valid command else false </returns>
+        </member>
+        <member name="M:GUI.Form1.setColor(System.String)">
+            <summary>
+            Sets the pen color for all future drawing
+            </summary>
+            <remarks>
+            The color will be entered as string e.g "red" or "green"
+            </remarks>
+            <param name="values"> the color value entered as string </param>
+        </member>
+        <member name="M:GUI.Form1.setWidth(System.String)">
+            <summary>
+            Sets the pen width for all future drawing
+            </summary>
+            <remarks>
+            The width has to be between 1 - 5 inclusive,
+            any other value will be invalid and error shown
+            </remarks>
+            <param name="values"> the width of the pen entered as string </param>
+        </member>
+        <member name="M:GUI.Form1.moveTo(System.String)">
+            <summary>
+            Executes the command to move the current cursor position
+            </summary>
+            <param name="values"> the new cursor position entered as string </param>
+        </member>
+        <member name="M:GUI.Form1.drawTo(System.String)">
+            <summary>
+            Draws a line to the given position from the current cursor position
+            </summary>
+            <param name="values"> the to point location entered as string </param>
+        </member>
+        <member name="M:GUI.Form1.clear">
+            <summary>
+            Clears the fields in the form along with status and command area.
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.reset">
+            <summary>
+            Resets the form, the starting position, the pen width and color.
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the button1
+            </summary>
+            <param name="sender"> the event source </param>
+            <param name="e"> the event argument </param>
+        </member>
+        <member name="M:GUI.Form1.Form1_Load_1(System.Object,System.EventArgs)">
+            <summary>
+            The load event execution point for the form
+            </summary>
+            <param name="sender"> the event information </param>
+            <param name="e"> the event argument </param>
+        </member>
+        <member name="F:GUI.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:GUI.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:GUI.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:GUI.Shape">
+            <summary>
+            Shape class: an abstract class to be implemented by all the concrete shapes.
+            </summary>
+            <remarks>
+            Every new shape to be added to the code will have to derive from this abstract class
+            to be able to become part of the code and being drawn with help of the appropriate command
+            </remarks>
+        </member>
+        <member name="T:GUI.ShapeRectangle">
+            <summary>
+            ShapeRectangle class: inherits the abstract class Shape
+            </summary>
+        </member>
+        <member name="M:GUI.ShapeRectangle.Draw(GUI.Form1,System.String)">
+            <summary>
+            Draws a rectangle onto the drawing area of the form with the given params
+            </summary>
+            <remarks>
+            Implements the only abstract function in the base class
+            </remarks>
+            <param name="form"> the form from which the command was issued </param>
+            <param name="args"> the position and size related arguments </param>
+            <returns> true if rectanle was drawn successfully else false </returns>
+        </member>
+        <member name="T:GUI.ShapeCircle">
+            <summary>
+            ShapeCircle class: inherits the abstract class Shape
+            </summary>
+        </member>
+        <member name="M:GUI.ShapeCircle.Draw(GUI.Form1,System.String)">
+            <summary>
+            Draws a cirlce onto the drawing area of the form with the given params
+            </summary>
+            <remarks>
+            Implements the only abstract function in the base class
+            </remarks>
+            <param name="form"> the form from which the command was issued </param>
+            <param name="args"> the position and size related arguments </param>
+            <returns> true if circle was drawn successfully else false </returns>
+        </member>
+        <member name="T:GUI.ShapeTriangle">
+            <summary>
+            ShapeTriangle class: inherits the abstract class Shape
+            </summary>
+        </member>
+        <member name="M:GUI.ShapeTriangle.Draw(GUI.Form1,System.String)">
+            <summary>
+            Draws a triangle onto the drawing area of the form with the given params
+            </summary>
+            <remarks>
+            Implements the only abstract function in the base class
+            </remarks>
+            <param name="form"> the form from which the command was issued </param>
+            <param name="args"> the position and size related arguments </param>
+            <returns> true if triangle was drawn successfully else false </returns>
+        </member>
+        <member name="T:GUI.ShapeFactory">
+            <summary>
+            ShapeFactory Class: Returns the shape based on the shape type
+            </summary>
+            <remarks>
+            This implements the factory pattern, to obtain the concrete shape objects
+            based on the shape type passed as the parameter.
+            </remarks>
+        </member>
+        <member name="M:GUI.ShapeFactory.GetShape(System.Int32)">
+            <summary>
+            Static function to return the concrete shape object based on the parameter
+            </summary>
+            <param name="shapeType"> the integer shape type </param>
+            <returns> the appropriate shape object </returns>
+        </member>
+        <member name="T:GUI.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:GUI.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:GUI.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
